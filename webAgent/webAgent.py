@@ -21,10 +21,10 @@ app.logger.setLevel(logging.INFO)
 @app.route('/deploy')
 def deploy_tomcat():
     deploy_cmd = userHome + 'myscript/tomcat-springrun.sh'
-    app.logger.info('excute cmd:' + deploy_cmd)
     result = os.system(deploy_cmd)
-    app.logger.info('result:' + result)
-    return "result:test1234123"
+    app.logger.info('excute cmd:' + deploy_cmd)
+    app.logger.info(result)
+    return 'delpoy success'
 
 
 @app.route('/test')
