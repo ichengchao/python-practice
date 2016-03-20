@@ -7,6 +7,8 @@ __author__ = 'charles'
 
 app = Flask(__name__)
 
+
+# logging setting
 userHome = os.path.expanduser('~/')
 logHandler = logging.FileHandler(userHome + 'logs/webAgent.log')
 logHandler.setLevel(logging.INFO)
@@ -31,6 +33,16 @@ def deploy_tomcat():
 def test():
     app.logger.info('test')
     return "test success"
+
+
+@app.route('/uptime')
+def uptime():
+    uptime_result = os.popen('uptime')
+    line_list = uptime_result.readlines()
+    result = ''
+    for line in line_list:
+        result += line
+    return result
 
 
 if __name__ == '__main__':
