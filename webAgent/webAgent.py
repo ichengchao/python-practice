@@ -18,13 +18,19 @@ app.logger.addHandler(logHandler)
 app.logger.setLevel(logging.INFO)
 
 
-@app.route('/')
-def hello():
+@app.route('/deploy')
+def deploy_tomcat():
     deploy_cmd = userHome + 'myscript/tomcat-springrun.sh'
     app.logger.info('excute cmd:' + deploy_cmd)
     result = os.system(deploy_cmd)
     app.logger.info('result:' + result)
     return "result:test1234123"
+
+
+@app.route('/test')
+def test():
+    app.logger.info('test')
+    return "test success"
 
 
 if __name__ == '__main__':
