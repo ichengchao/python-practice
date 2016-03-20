@@ -20,8 +20,10 @@ app.logger.setLevel(logging.INFO)
 
 @app.route('/')
 def hello():
-    result = os.system(userHome + 'myscript.sh')
-    app.logger.info(result)
+    deploy_cmd = userHome + 'myscript/tomcat-springrun.sh'
+    app.logger.info('excute cmd:' + deploy_cmd)
+    result = os.system(deploy_cmd)
+    app.logger.info('result:' + result)
     return "result:test1234123"
 
 
